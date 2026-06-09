@@ -14,13 +14,13 @@ pipeline {
             }
         }
 
+
         stage('Setup Python Environment') {
             steps {
                 bat '''
                 python -m venv venv
-                call venv\\Scripts\\activate
-                pip install --upgrade pip
-                pip install -r requirements.txt
+                venv\\Scripts\\python.exe -m pip install --upgrade pip
+                venv\\Scripts\\python.exe -m pip install -r requirements.txt
                 '''
             }
         }
@@ -28,8 +28,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate
-                pytest tests
+                venv\\Scripts\\python.exe -m pytest tests
                 '''
             }
         }
@@ -37,8 +36,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate
-                python main.py
+                venv\\Scripts\\python.exe main.py
                 '''
             }
         }
@@ -53,7 +51,6 @@ pipeline {
     }
 
     post {
-
         success {
             echo 'Pipeline executed successfully!'
         }
@@ -63,3 +60,4 @@ pipeline {
         }
     }
 }
+```

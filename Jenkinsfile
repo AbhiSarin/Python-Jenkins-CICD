@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     PYTHON = 'C:\Users\Abhishek\AppData\Local\Programs\Python\Python312\python.exe'
 }

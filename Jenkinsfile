@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 tools {
     python 'Python3'
 }
@@ -53,6 +52,5 @@ post {
         echo 'Pipeline failed!'
     }
 }
-```
 
 }

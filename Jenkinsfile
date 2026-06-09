@@ -1,8 +1,9 @@
 pipeline {
 agent any
 
-tools {
-    python 'Python3'
+```
+environment {
+    PYTHON = 'C:\Users\Abhishek\AppData\Local\Programs\Python\Python312\python.exe'
 }
 
 stages {
@@ -10,8 +11,8 @@ stages {
     stage('Setup Python Environment') {
         steps {
             bat '''
-            python --version
-            python -m venv venv
+            "%PYTHON%" --version
+            "%PYTHON%" -m venv venv
             venv\\Scripts\\python.exe -m pip install --upgrade pip
             venv\\Scripts\\python.exe -m pip install -r requirements.txt
             '''
@@ -52,5 +53,6 @@ post {
         echo 'Pipeline failed!'
     }
 }
+```
 
 }
